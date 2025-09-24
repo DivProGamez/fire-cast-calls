@@ -36,14 +36,14 @@ const AppContext = createContext<AppContextValue | null>(null);
 
 // Generate character data
 const generateCharacters = (): Character[] => {
-  return Array.from({ length: 12 }, (_, i) => ({
+  return Array.from({ length: 6 }, (_, i) => ({
     id: i + 1,
     name: `Character ${i + 1}`,
     iconUrl: `/images/character_${i + 1}_icon.png`,
     videoUrl: `/videos/character_${i + 1}_video.mp4`,
-    isFree: i < 6,
-    isPurchased: i < 6, // Free characters are always purchased
-    sku: i >= 6 ? `sku.niche${i + 1}` : undefined,
+    isFree: i < 2,
+    isPurchased: i < 2, // Free characters are always purchased
+    sku: i >= 2 ? `sku.niche${i + 1}` : undefined,
   }));
 };
 
