@@ -161,10 +161,17 @@
     background: var(--gradient-danger);
   }
 
-  /* Professional Character Grid 2×3 */
+  /* Compact Character Grid */
   .character-grid {
-    @apply grid grid-cols-3 gap-8;
-    @apply max-w-6xl mx-auto px-8;
+    @apply grid grid-cols-2 sm:grid-cols-3 gap-4;
+    @apply max-w-4xl mx-auto px-4;
+  }
+
+  /* Responsive Adjustments */
+  @media (min-width: 768px) {
+    .character-grid {
+      @apply grid-cols-3 gap-6;
+    }
   }
 
   /* Video Overlay */

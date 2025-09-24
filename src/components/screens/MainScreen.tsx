@@ -31,41 +31,40 @@ export const MainScreen: React.FC = () => {
 
   return (
     <div className="landscape-only fixed inset-0 bg-background overflow-hidden">
-      {/* Professional Header */}
-      <div className="flex items-center justify-between p-8 border-b-2 border-border/30">
+      {/* Compact Professional Header */}
+      <div className="flex items-center justify-between p-4 border-b border-border/30">
         <Button
           onClick={handleBack}
           variant="outline"
-          className="tv-button bg-gradient-to-r from-secondary to-muted hover:from-primary/20 hover:to-accent/20"
+          className="tv-button text-base px-6 py-3 bg-gradient-to-r from-secondary to-muted hover:from-primary/20 hover:to-accent/20"
           id="main-back"
         >
-          <ArrowLeft className="w-6 h-6 mr-3" />
-          Back to Menu
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back
         </Button>
         
-        <h1 className="text-5xl font-black gradient-primary bg-clip-text text-transparent tracking-tight">
+        <h1 className="text-2xl md:text-3xl font-bold gradient-primary bg-clip-text text-transparent">
           Choose Character
         </h1>
         
-        <div className="text-right text-lg text-muted-foreground font-semibold">
+        <div className="text-right text-sm text-muted-foreground">
           <p className="bg-gradient-to-r from-success to-primary bg-clip-text text-transparent">
-            {state.characters.filter(c => c.isPurchased).length} / {state.characters.length} Available
+            {state.characters.filter(c => c.isPurchased).length}/{state.characters.length}
           </p>
         </div>
       </div>
 
-      {/* Character Selection - Professional 2×3 Grid */}
-      <div className="flex-1 p-12 overflow-y-auto">
-        <div className="max-w-7xl mx-auto space-y-16">
+      {/* Compact Character Selection */}
+      <div className="flex-1 p-4 overflow-y-auto">
+        <div className="max-w-5xl mx-auto space-y-8">
           
           {/* Free Characters Row */}
-          <div className="space-y-8">
-            <div className="flex items-center justify-center space-x-4">
-              <Star className="w-8 h-8 text-success animate-pulse" />
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-success to-primary bg-clip-text text-transparent">
+          <div className="space-y-4">
+            <div className="flex items-center justify-center space-x-2">
+              <Star className="w-5 h-5 text-success" />
+              <h2 className="text-xl font-bold bg-gradient-to-r from-success to-primary bg-clip-text text-transparent">
                 Free Characters
               </h2>
-              <Star className="w-8 h-8 text-success animate-pulse" />
             </div>
             
             <div className="character-grid">
@@ -81,13 +80,12 @@ export const MainScreen: React.FC = () => {
           </div>
 
           {/* Premium Characters Row */}
-          <div className="space-y-8">
-            <div className="flex items-center justify-center space-x-4">
-              <Lock className="w-8 h-8 text-warning animate-pulse" />
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-warning to-accent bg-clip-text text-transparent">
+          <div className="space-y-4">
+            <div className="flex items-center justify-center space-x-2">
+              <Lock className="w-5 h-5 text-warning" />
+              <h2 className="text-xl font-bold bg-gradient-to-r from-warning to-accent bg-clip-text text-transparent">
                 Premium Characters
               </h2>
-              <Lock className="w-8 h-8 text-warning animate-pulse" />
             </div>
             
             <div className="character-grid">
@@ -105,13 +103,11 @@ export const MainScreen: React.FC = () => {
         </div>
       </div>
 
-      {/* Professional Footer */}
-      <div className="p-6 border-t-2 border-border/30 text-center">
-        <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-4">
-          <p className="text-lg font-semibold text-muted-foreground">
-            🎮 <span className="text-primary">Arrow Keys</span> or <span className="text-accent">Remote</span> to Navigate • 
-            <span className="text-success"> Enter/OK</span> to Select • 
-            <span className="text-warning"> ESC/Back</span> to Return
+      {/* Compact Footer */}
+      <div className="p-3 border-t border-border/30 text-center">
+        <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg p-2">
+          <p className="text-sm text-muted-foreground">
+            🎮 <span className="text-primary">Arrows</span> • <span className="text-success">Enter</span> • <span className="text-warning">ESC</span>
           </p>
         </div>
       </div>
