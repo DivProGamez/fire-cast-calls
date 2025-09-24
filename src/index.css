@@ -161,16 +161,16 @@
     background: var(--gradient-danger);
   }
 
-  /* Compact Character Grid */
+  /* Single Row Character Grid - 6 Icons */
   .character-grid {
-    @apply grid grid-cols-2 sm:grid-cols-3 gap-4;
-    @apply max-w-4xl mx-auto px-4;
+    @apply grid grid-cols-6 gap-4;
+    @apply max-w-full mx-auto px-4;
   }
 
-  /* Responsive Adjustments */
-  @media (min-width: 768px) {
+  /* Responsive for smaller screens */
+  @media (max-width: 768px) {
     .character-grid {
-      @apply grid-cols-3 gap-6;
+      @apply grid-cols-3 gap-3;
     }
   }
 

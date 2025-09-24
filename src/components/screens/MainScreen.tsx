@@ -8,8 +8,8 @@ import { CharacterCard } from '@/components/CharacterCard';
 export const MainScreen: React.FC = () => {
   const { state, navigateToScreen, selectCharacter } = useApp();
   
-  // Grid navigation for character selection (2 rows, 3 columns)
-  const { getElementId } = useGridNavigation('character-grid', 2, 3);
+  // Grid navigation for character selection (1 row, 6 columns)
+  const { getElementId } = useGridNavigation('character-grid', 1, 6);
 
   const handleBack = () => {
     navigateToScreen('menu');
@@ -54,21 +54,23 @@ export const MainScreen: React.FC = () => {
         </div>
       </div>
 
-      {/* Compact Character Selection */}
-      <div className="flex-1 p-4 overflow-y-auto">
-        <div className="max-w-5xl mx-auto space-y-8">
+      {/* Character Selection - Single Row */}
+      <div className="flex-1 p-6 overflow-y-auto">
+        <div className="max-w-6xl mx-auto">
           
-          {/* Free Characters Row */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-center space-x-2">
-              <Star className="w-5 h-5 text-success" />
-              <h2 className="text-xl font-bold bg-gradient-to-r from-success to-primary bg-clip-text text-transparent">
-                Free Characters
+          {/* All Characters in Single Row */}
+          <div className="space-y-6">
+            <div className="text-center">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-success via-primary to-warning bg-clip-text text-transparent">
+                Choose Your Character
               </h2>
+              <p className="text-sm text-muted-foreground mt-2">
+                2 Free • 4 Premium
+              </p>
             </div>
             
             <div className="character-grid">
-              {freeCharacters.map((character, index) => (
+              {state.characters.map((character, index) => (
                 <CharacterCard
                   key={character.id}
                   character={character}
@@ -79,35 +81,14 @@ export const MainScreen: React.FC = () => {
             </div>
           </div>
 
-          {/* Premium Characters Row */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-center space-x-2">
-              <Lock className="w-5 h-5 text-warning" />
-              <h2 className="text-xl font-bold bg-gradient-to-r from-warning to-accent bg-clip-text text-transparent">
-                Premium Characters
-              </h2>
-            </div>
-            
-            <div className="character-grid">
-              {premiumCharacters.map((character, index) => (
-                <CharacterCard
-                  key={character.id}
-                  character={character}
-                  id={getElementId(1, index)}
-                  onClick={() => handleCharacterSelect(character)}
-                />
-              ))}
-            </div>
-          </div>
-
         </div>
       </div>
 
-      {/* Compact Footer */}
+      {/* Footer Navigation Instructions */}
       <div className="p-3 border-t border-border/30 text-center">
         <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg p-2">
           <p className="text-sm text-muted-foreground">
-            🎮 <span className="text-primary">Arrows</span> • <span className="text-success">Enter</span> • <span className="text-warning">ESC</span>
+            ← → <span className="text-primary">Navigate</span> • <span className="text-success">Enter</span> Select • <span className="text-warning">ESC</span> Back
           </p>
         </div>
       </div>
