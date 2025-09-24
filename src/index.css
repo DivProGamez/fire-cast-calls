@@ -2,65 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fake Call Video App - TV Optimized Design System */
+/* Fake Call Video App - Professional 2025 TV Design */
 @layer base {
   :root {
-    /* TV-Optimized Dark Theme */
-    --background: 216 24% 8%;
+    /* 2025 Professional Dark Theme */
+    --background: 220 26% 6%;
     --foreground: 210 40% 98%;
 
-    --card: 217 24% 12%;
+    --card: 220 24% 10%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 217 24% 12%;
+    --popover: 220 24% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 195 100% 50%;
-    --primary-foreground: 216 24% 8%;
+    --primary: 260 84% 65%;
+    --primary-foreground: 220 26% 6%;
 
-    --secondary: 217 24% 16%;
+    --secondary: 240 21% 15%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217 24% 14%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 240 19% 12%;
+    --muted-foreground: 215 25% 70%;
 
-    --accent: 195 100% 50%;
-    --accent-foreground: 216 24% 8%;
+    --accent: 280 89% 67%;
+    --accent-foreground: 220 26% 6%;
 
-    --success: 142 76% 36%;
-    --success-foreground: 210 40% 98%;
+    --success: 158 64% 52%;
+    --success-foreground: 220 26% 6%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 216 24% 8%;
+    --warning: 43 96% 56%;
+    --warning-foreground: 220 26% 6%;
 
-    --border: 217 24% 20%;
-    --input: 217 24% 16%;
-    --ring: 195 100% 50%;
+    --border: 240 19% 16%;
+    --input: 240 19% 12%;
+    --ring: 260 84% 65%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* TV-Specific Design Tokens */
-    --tv-focus: 195 100% 50%;
-    --tv-focus-bg: 195 100% 50% / 0.1;
-    --tv-glow: 0 0 20px hsl(195 100% 50% / 0.5);
+    /* 2025 Professional Design Tokens */
+    --tv-focus: 260 84% 65%;
+    --tv-focus-bg: 260 84% 65% / 0.12;
+    --tv-glow: 0 0 32px hsl(260 84% 65% / 0.6);
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(195 100% 50%), hsl(217 100% 60%));
-    --gradient-dark: linear-gradient(135deg, hsl(216 24% 8%), hsl(217 24% 12%));
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(120 76% 40%));
-    --gradient-danger: linear-gradient(135deg, hsl(0 84% 60%), hsl(15 84% 55%));
+    /* Premium Gradients 2025 */
+    --gradient-primary: linear-gradient(135deg, hsl(260 84% 65%), hsl(280 89% 67%));
+    --gradient-secondary: linear-gradient(135deg, hsl(240 21% 15%), hsl(240 19% 12%));
+    --gradient-success: linear-gradient(135deg, hsl(158 64% 52%), hsl(142 69% 58%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 72% 51%), hsl(15 86% 53%));
+    --gradient-card: linear-gradient(145deg, hsl(220 24% 10%), hsl(240 19% 12%));
     
-    /* Shadows */
-    --shadow-glow: 0 0 30px hsl(195 100% 50% / 0.3);
-    --shadow-card: 0 8px 32px hsl(216 24% 4% / 0.4);
-    --shadow-focus: 0 0 0 3px hsl(195 100% 50% / 0.3);
+    /* Advanced Shadows */
+    --shadow-glow: 0 0 40px hsl(260 84% 65% / 0.4);
+    --shadow-card: 0 12px 48px hsl(220 26% 2% / 0.5);
+    --shadow-focus: 0 0 0 4px hsl(260 84% 65% / 0.4), 0 0 32px hsl(260 84% 65% / 0.3);
+    --shadow-elevated: 0 24px 64px hsl(220 26% 2% / 0.6);
 
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-focus: all 0.2s ease-out;
+    /* Smooth Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-focus: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -127,22 +129,24 @@
     @apply bg-background text-foreground;
   }
 
-  /* TV-Focused Elements */
+  /* 2025 Professional TV Elements */
   .tv-focusable {
-    @apply transition-all duration-200 ease-out;
-    @apply focus:outline-none focus:ring-2 focus:ring-primary/50 focus:bg-primary/10;
-    @apply hover:bg-accent/10 hover:scale-105;
+    transition: var(--transition-focus);
+    @apply focus:outline-none focus:shadow-[var(--shadow-focus)] focus:scale-105 focus:z-10;
+    @apply hover:bg-primary/10 hover:scale-[1.02] hover:shadow-[var(--shadow-glow)];
   }
   
   .tv-button {
-    @apply tv-focusable rounded-lg px-8 py-4 text-lg font-semibold;
-    @apply shadow-lg hover:shadow-xl active:scale-95;
+    @apply tv-focusable rounded-xl px-10 py-5 text-xl font-bold;
+    @apply bg-gradient-to-br from-primary to-accent text-primary-foreground;
+    @apply shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] active:scale-95;
   }
   
   .tv-card {
-    @apply bg-card border border-border rounded-xl p-6;
-    @apply shadow-[var(--shadow-card)] tv-focusable;
-    @apply hover:border-primary/30 hover:shadow-[var(--shadow-glow)];
+    @apply bg-gradient-to-br from-card to-card/80 border-2 border-border rounded-2xl p-8;
+    @apply shadow-[var(--shadow-card)] tv-focusable backdrop-blur-sm;
+    @apply hover:border-primary/40 hover:shadow-[var(--shadow-glow)];
+    @apply focus:border-primary focus:bg-gradient-to-br focus:from-primary/10 focus:to-accent/10;
   }
 
   .gradient-primary {
@@ -157,9 +161,10 @@
     background: var(--gradient-danger);
   }
 
-  /* Character Grid */
+  /* Professional Character Grid 2×3 */
   .character-grid {
-    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6;
+    @apply grid grid-cols-3 gap-8;
+    @apply max-w-6xl mx-auto px-8;
   }
 
   /* Video Overlay */

@@ -17,8 +17,9 @@ export const useInput = (config: InputConfig) => {
     const { key } = event;
     
     // Prevent default behavior for navigation keys
-    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' ', 'Escape'].includes(key)) {
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' ', 'Escape', 'Backspace'].includes(key)) {
       event.preventDefault();
+      event.stopPropagation();
     }
 
     switch (key) {
@@ -27,6 +28,7 @@ export const useInput = (config: InputConfig) => {
         config.onEnter?.();
         break;
       case 'Escape':
+      case 'Backspace':
         config.onEscape?.();
         break;
       case 'ArrowUp':

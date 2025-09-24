@@ -8,8 +8,8 @@ import { CharacterCard } from '@/components/CharacterCard';
 export const MainScreen: React.FC = () => {
   const { state, navigateToScreen, selectCharacter } = useApp();
   
-  // Grid navigation for character selection (2 rows, 6 columns)
-  const { getElementId } = useGridNavigation('character-grid', 2, 6);
+  // Grid navigation for character selection (2 rows, 3 columns)
+  const { getElementId } = useGridNavigation('character-grid', 2, 3);
 
   const handleBack = () => {
     navigateToScreen('menu');
@@ -31,39 +31,44 @@ export const MainScreen: React.FC = () => {
 
   return (
     <div className="landscape-only fixed inset-0 bg-background overflow-hidden">
-      {/* Header */}
-      <div className="flex items-center justify-between p-6 border-b border-border/50">
+      {/* Professional Header */}
+      <div className="flex items-center justify-between p-8 border-b-2 border-border/30">
         <Button
           onClick={handleBack}
           variant="outline"
-          className="tv-button"
+          className="tv-button bg-gradient-to-r from-secondary to-muted hover:from-primary/20 hover:to-accent/20"
           id="main-back"
         >
-          <ArrowLeft className="w-5 h-5 mr-2" />
+          <ArrowLeft className="w-6 h-6 mr-3" />
           Back to Menu
         </Button>
         
-        <h1 className="text-3xl font-bold gradient-primary bg-clip-text text-transparent">
-          Choose Your Character
+        <h1 className="text-5xl font-black gradient-primary bg-clip-text text-transparent tracking-tight">
+          Choose Character
         </h1>
         
-        <div className="text-right text-sm text-muted-foreground">
-          <p>{state.characters.filter(c => c.isPurchased).length} / {state.characters.length} Available</p>
+        <div className="text-right text-lg text-muted-foreground font-semibold">
+          <p className="bg-gradient-to-r from-success to-primary bg-clip-text text-transparent">
+            {state.characters.filter(c => c.isPurchased).length} / {state.characters.length} Available
+          </p>
         </div>
       </div>
 
-      {/* Character Selection */}
-      <div className="flex-1 p-8 overflow-y-auto">
-        <div className="max-w-7xl mx-auto space-y-12">
+      {/* Character Selection - Professional 2×3 Grid */}
+      <div className="flex-1 p-12 overflow-y-auto">
+        <div className="max-w-7xl mx-auto space-y-16">
           
-          {/* Free Characters Section */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-3">
-              <Star className="w-6 h-6 text-primary" />
-              <h2 className="text-2xl font-bold">Free Characters</h2>
+          {/* Free Characters Row */}
+          <div className="space-y-8">
+            <div className="flex items-center justify-center space-x-4">
+              <Star className="w-8 h-8 text-success animate-pulse" />
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-success to-primary bg-clip-text text-transparent">
+                Free Characters
+              </h2>
+              <Star className="w-8 h-8 text-success animate-pulse" />
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="character-grid">
               {freeCharacters.map((character, index) => (
                 <CharacterCard
                   key={character.id}
@@ -75,15 +80,17 @@ export const MainScreen: React.FC = () => {
             </div>
           </div>
 
-          {/* Premium Characters Section */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-3">
-              <Lock className="w-6 h-6 text-warning" />
-              <h2 className="text-2xl font-bold">Premium Characters</h2>
-              <span className="text-sm text-muted-foreground">(Unlock with purchase)</span>
+          {/* Premium Characters Row */}
+          <div className="space-y-8">
+            <div className="flex items-center justify-center space-x-4">
+              <Lock className="w-8 h-8 text-warning animate-pulse" />
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-warning to-accent bg-clip-text text-transparent">
+                Premium Characters
+              </h2>
+              <Lock className="w-8 h-8 text-warning animate-pulse" />
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="character-grid">
               {premiumCharacters.map((character, index) => (
                 <CharacterCard
                   key={character.id}
@@ -98,9 +105,15 @@ export const MainScreen: React.FC = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="p-4 border-t border-border/50 text-center text-sm text-muted-foreground">
-        Use arrow keys or remote to navigate • Press OK/Enter to select • Press Back/Escape to return
+      {/* Professional Footer */}
+      <div className="p-6 border-t-2 border-border/30 text-center">
+        <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-4">
+          <p className="text-lg font-semibold text-muted-foreground">
+            🎮 <span className="text-primary">Arrow Keys</span> or <span className="text-accent">Remote</span> to Navigate • 
+            <span className="text-success"> Enter/OK</span> to Select • 
+            <span className="text-warning"> ESC/Back</span> to Return
+          </p>
+        </div>
       </div>
 
       {/* Portrait Warning */}
